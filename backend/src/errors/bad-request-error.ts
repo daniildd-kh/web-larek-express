@@ -1,10 +1,10 @@
-class BadRequestError extends Error{
+class BadRequestError extends Error {
   statusCode: number;
 
-  constructor(message: string){
+  constructor(message: string) {
     super(message);
     this.statusCode = 400;
   }
 }
 
-export default BadRequestError
+export default BadRequestError;
