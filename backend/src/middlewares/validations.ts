@@ -13,8 +13,13 @@ const orderValidationSchema = Joi.object({
   address: Joi.string().required(),
 });
 
-const userValidationSchema = Joi.object({
+const registerValidationSchema = Joi.object({
   name: Joi.string().min(2).max(30),
+  email: Joi.string().email().required(),
+  password: Joi.string().min(6).required(),
+});
+
+const loginValidationSchema = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().min(6).required(),
 });
@@ -45,8 +50,12 @@ export const validateOrderBody = celebrate({
   [Segments.BODY]: orderValidationSchema,
 });
 
-export const validateUserBody = celebrate({
-  [Segments.BODY]: userValidationSchema,
+export const validateRegisterBody = celebrate({
+  [Segments.BODY]: registerValidationSchema,
+});
+
+export const validateLoginBody = celebrate({
+  [Segments.BODY]: loginValidationSchema,
 });
 
 export const validateProductBody = celebrate({
